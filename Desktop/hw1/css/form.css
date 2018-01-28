@@ -1,0 +1,11 @@
+
+.form-select>li
+{
+    display: inline-block;
+}
+
+.form-select
+{
+    width: 65%;
+    margin: auto;
+}
