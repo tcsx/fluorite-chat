@@ -1,16 +1,26 @@
 {
-  "name": "finalprojects",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-scripts": "1.1.4"
-  },
+  "name": "project-fluorite",
+  "version": "1.0.0",
+  "description": "online chat application",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seainfo6250/project-fluorite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seainfo6250/project-fluorite/issues"
+  },
+  "homepage": "https://github.com/seainfo6250/project-fluorite#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "mongoose": "^5.0.15",
+    "multer": "^1.3.0",
+    "socket.io": "^2.1.0"
   }
 }
