@@ -22,6 +22,10 @@ class NavBar extends Component {
         <span className="iconfont icon-friends"></span>
         <span className="navBar-text">Contact List</span>
         </NavLink>
+      
+       <NavLink to="/login" activeClassName="selected">
+          <span className="navBar-text" id="logout">Log out</span>
+          </NavLink>
       </div>
     );
   }
