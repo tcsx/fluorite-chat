@@ -70,12 +70,13 @@ app.post("/login", function (req, res) {
 
 })
 // Search friend
-app.post("/getUsers", (req, res) => {
-    let partten = new RegExp("^" + req.body.username);
+app.get("/user/:userName/friend/:friendName", (req, res) => {
+    const {username, friendName} = req.params;
+    let partten = new RegExp("^" + username);
     let conn = {
         username: {
             $regex: partten,
-            $ne: req.body.self_username
+            $ne: friendName
         }
     };
 

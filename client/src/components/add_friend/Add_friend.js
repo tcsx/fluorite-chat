@@ -25,7 +25,7 @@ class Add_friend extends Component {
         let _this = this;
         if (!value) return this.setState({ search_lists: [] });
         let self_username = window.store.getState().save_info.username;
-        axios.post('/getUsers', { username: value, self_username: self_username }).then((res) => {
+        axios.get(`/user/${self_username}/friend/${value}`).then((res) => {
             this.setState({ search_lists: res.data.userInfo });
         })
     }

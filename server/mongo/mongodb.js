@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let DB_URL = 'mongodb://root:123@ds153869.mlab.com:53869/chat'
+let DB_URL = 'mongodb://chat:chat@ds255539.mlab.com:55539/chat'
 mongoose.connect(DB_URL,{useMongoClient:true});
 
 /**
