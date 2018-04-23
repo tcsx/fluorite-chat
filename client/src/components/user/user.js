@@ -7,18 +7,20 @@ import { Link } from 'react-router-dom'
 class User extends Component {
     render() {
         return (
-          <div id='user'>
-              <div className="userInfo-content">
-                      <div className="logo-wrap">
-                          <img src={ this.props.self_logo } alt="" />
-                      </div>
-                      <div className="textWrap">
-                          <div className="user-username">{this.props.self_username}</div>
-                      </div>
+            <div id='user'>
+                <div className="userInfo-content">
+                    <Link to="/editInfo" className="edit_userInfo">
+                        <div className="logo-wrap">
+                            <img src={ this.props.self_logo } alt="" />
+                        </div>
+                        <div className="textWrap">
+                            <div className="user-username">{this.props.self_username}</div>
+                        </div>
 
-              </div>
+                    </Link>
 
-          </div>
+                </div>
+            </div>
         )
     }
 }
