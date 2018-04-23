@@ -26,7 +26,7 @@ class Add_friend extends Component {
     onSubmit = (value) => {
         if (!value) return this.setState({ search_lists: [] });
         // let self_username = window.store.getState().save_info.username;
-        axios.get(`/user/${this.props.user_info.id}/friends/${value}`).then((res) => {
+        axios.get(`/user/${this.props._id}/friends/${value}`).then((res) => {
             this.setState({ search_lists: res.data.userInfo });
         })
     }
@@ -41,26 +41,12 @@ class Add_friend extends Component {
         this.manualFocusInst.focus();
     }
     onAdd_friend = ({ username, _id }) => {
-        // let _this = this;
-        let bool = this.props.save_info.friends.some((friend) => {
-            if (friend.id == _id) {
-                this.failToast("He/She has been your friend！")
-                return true;
-            }
-        })
-        if (bool) return false;
-        // let firend = {
-        //     username: obj.username,
-        //     id: obj._id,
-        //     nickname: obj.nickname,
-        //     logo: obj.logo
-        // };
-        // let data = {
-        //     self: _this.props.user_info,
-        //     friend: firend
-        // }
+        if (this.props.friends.includes(_id)) { 
+            this.failToast("He/She has been your friend！");
+            return false;
+        }
 
-        axios.put(`/user/${this.props.user_info.id}/friends/${_id}`).then(res => {
+        axios.put(`/user/${this.props._id}/friends/${_id}`).then(res => {
             this.props.dispatch({ type: "ADD_FRIEND", data: res.data })
             this.setState({ value: " ", search_lists: [] });
             this.successToast("Add successfully！！");
@@ -108,15 +94,7 @@ class Add_friend extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        user_info: {
-            logo: state.save_info.logo,
-            username: state.save_info.username,
-            nickname: state.save_info.nickname,
-            id: state.save_info._id
-        },
-        save_info: state.save_info
-    }
+    return { ...state.save_info };
 }
 
 export default connect(mapStateToProps)(Add_friend);

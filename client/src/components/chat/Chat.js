@@ -83,7 +83,7 @@ class Chat extends Component {
 
 
         let read_bool = false;
-        if (message_wrap && (self || from_id==this.state.chat_person.id) ){
+        if (message_wrap && (self || from_id===this.state.chat_person.id) ){
             message_wrap.appendChild(div);
             div.scrollIntoView();
 
