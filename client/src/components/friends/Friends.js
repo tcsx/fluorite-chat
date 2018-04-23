@@ -11,16 +11,18 @@ class Friends extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:""
+            value: "",
+            friends: [] 
         }
     }
+
     toUserCard = (obj) => {
-    this.props.history.push({
-                                pathname:'/chat',
-                                params:{
-                                    friend:obj
-}
-});
+        this.props.history.push({
+            pathname: '/chat',
+            params: {
+                friend: obj
+            }
+        });
     }
     successToast = function () {
         Toast.success('Load success !!!', 1);
@@ -44,45 +46,50 @@ class Friends extends Component {
         this.setState({ value: '' });
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        axios.get(`/user/${this.props._id}/friends`).then(res => {
+            this.setState({
+                friends: res.data
+            })
+        })
+    }
 
+    renderFriends() {
+        return this.state.friends.map((friend, index) =>
+                                <div onClick={() => { this.toUserCard(friend) }} key={index} className="friend_list">
+                                    <div className="friend_list_logoWrap">
+                                        <img className="friend_list_logo" src={friend.logo} alt="" />
+                                    </div>
+                                    <div className="friend_name">{friend.nickname}</div>
+                                </div>
+                                , this);
     }
 
 
     render() {
 
         return (
-          <div id="friends">
-          <Header field={{ title: 'Fluorite Chat', path: "/chatlist" }} />
+            <div id="friends">
+                <Header field={{ title: 'Fluorite Chat', path: "/chatlist" }} />
 
-          <NavBar />
-            <div id="rightBar">
+                <NavBar />
+                <div id="rightBar">
 
-              <div style={{overflow:'auto',height:"100%"}}>
+                    <div style={{ overflow: 'auto', height: "100%" }}>
 
-                  <div style={{ marginTop: ".1rem" }} className="friend_lists">
-                      {this.props.list_arr.map((list,index) =>
-                          <div onClick={()=>{this.toUserCard(list)}} key={index} className="friend_list">
-                              <div className="friend_list_logoWrap">
-                                  <img className="friend_list_logo" src="./image/icon_moren_face.png" alt="" />
-                              </div>
-                              <div className="friend_name">{list.nickname}</div>
-                          </div>
-                      ,this)}
-                  </div>
-              </div>
-              </div>
-          </div>
+                        <div style={{ marginTop: ".1rem" }} className="friend_lists">
+                            {this.renderFriends()}
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        list_arr: state.save_info.friends ,
-        groups: state.save_info.groups,
-        logo: state.save_info.logo
-    }
+    const { friends, groups, logo, _id } = state.save_info;
+    return { friends, groups, logo, _id };
 }
 
 export default connect(mapStateToProps)(Friends);

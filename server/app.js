@@ -90,11 +90,13 @@ app.get("/user/:userId/friends/:friendName", (req, res) => {
 // Add friend
 app.put('/user/:userId/friends/:friendId', (req, res) => {
     const { userId, friendId } = req.params;
-    User.update({ _id: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() => res.send({
-        status: "success",
-        message: "Add a friend successfully"
-    }));
+    User.update({ _id: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() => User.findById(friendId, {'logo': 1, 'username': 1, 'nickname': 1})).then(friend => res.send(friend)).catch(console.log);
+});
 
+//{ $pull: { fruits: { $in: [ "apples", "oranges" ] }
+app.delete('/user/:userId/friends/:friendId', (req, res) => {
+    const { userId, friendId } = req.params;
+    User.update({ _id: userId }, { $pull: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $pull: { friends: userId } }).exec()).then(() => res.send("Deleted")).catch(console.log);
 });
 
 // upload figure
@@ -114,6 +116,14 @@ app.post("/savenickname", (req, res) => {
             status: 'success'
         });
     });
+});
+
+app.get("/user/:userId/friends", (req, res) => {
+    const { userId } = req.params;
+    User.findById(userId, {
+        'friends': 1,
+        '_id': 0
+    }).populate('friends', ['logo', 'username', 'nickname']).then(friends => res.send(friends.friends)).catch(console.log);
 });
 
 
