@@ -86,3 +86,16 @@ input[type="nickname"]{
     left:50%;
     transform: translateX(-50%);
 }
+.switch_button{
+  position: absolute;
+  right:20%;
+  width: 5%;
+  height: .15rem;
+  text-align: center;
+  border: .02rem solid #1caf08;
+  border-radius: .05rem;
+  line-height: .10rem;
+  background: #1caf08;
+  color: #fff;
+  font-size: 90%;
+}
