@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './chat.css'
 import { connect } from 'react-redux'
 import Header from '../header/Header.js'
+// const socket = require('socket.io-client')('0.0.0.0:4000');
 
 
 class Chat extends Component {
@@ -24,7 +25,7 @@ class Chat extends Component {
             friend_id = this.props.history.location.params.friend.id,
             infos = this.props.self_rooms.find(o => o[friend_id]) ? this.props.self_rooms.find(o => o[friend_id])[friend_id] : [];
 
-        for (var i = 0; i < infos.length; i++) {
+        for (let i = 0; i < infos.length; i++) {
             let classN = infos[i].username == this.props.self_username ? 'self_message' : 'other_message';
             html += this.info_tpl(classN, infos[i].logo, infos[i].info);
         };
@@ -33,6 +34,7 @@ class Chat extends Component {
         if (message_wrap.children.length > 0) message_wrap.children[message_wrap.children.length - 1].scrollIntoView();
 
 
+        //infos.map(o => o.has_read = true);
         window.store.dispatch({type:"HAS_READ",user:friend_id})
     }
 
@@ -79,10 +81,12 @@ class Chat extends Component {
 
         }
 
+
         let read_bool = false;
         if (message_wrap && (self || from_id==this.state.chat_person.id) ){
             message_wrap.appendChild(div);
             div.scrollIntoView();
+
             read_bool = true;
         };
 
@@ -125,6 +129,7 @@ class Chat extends Component {
                             <textarea ref="textarea"></textarea>
                         </div>
                         <div className="bottom-right-btn">
+
                             <span onClick={this.onSend} className="iconfont icon-send"></span>
                         </div>
                     </div>

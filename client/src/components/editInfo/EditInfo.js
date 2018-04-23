@@ -13,7 +13,7 @@ class EditInfo extends Component {
                     <div style={{ marginTop: 0 }} className="items-wrap">
                         <Link to="/uploadLogo" className="upload_logo">
                             <div className="textWrap">
-                                <div className="">Avator</div>
+                                <div className="">Change your Profile Pic here</div>
                             </div>
                             <div className="logo-wrap">
                                 <img src={this.props.self_logo} alt="" />
@@ -23,7 +23,7 @@ class EditInfo extends Component {
                             </div>
                         </Link>
                         <Link style={{display:'flex',color:'#000'}} to="/resetInfo" className="user-item">
-                            <div className="textWrap">Name</div>
+                            <div className="textWrap">Nick Name</div>
                             <div className="text-info">{this.props.self_nickname}</div>
                             <div className="arrow">
                                 <span className="iconfont icon-arrow-right"></span>
@@ -33,27 +33,8 @@ class EditInfo extends Component {
                             <div className="textWrap">WetalkID</div>
                             <div style={{ marginRight: 0 }} className="text-info">{this.props.self_username}</div>
                         </div>
-                        <div className="user-item">
-                            <div className="textWrap"></div>
-                            <div className="arrow">
-                                <span className="iconfont icon-arrow-right"></span>
-                            </div>
-                        </div>
-                        <div className="user-item">
-                            <div className="textWrap">More...</div>
-                            <div className="arrow">
-                                <span className="iconfont icon-arrow-right"></span>
-                            </div>
-                        </div>
                     </div>
-                    <div className="items-wrap">
-                        <div className="user-item">
-                            <div className="textWrap">My address</div>
-                            <div className="arrow">
-                                <span className="iconfont icon-arrow-right"></span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         )
