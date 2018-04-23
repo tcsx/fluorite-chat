@@ -18,7 +18,7 @@ class Friends extends Component {
 
     toUserCard = (obj) => {
         this.props.history.push({
-            pathname: '/chat',
+            pathname: '/userCard',
             params: {
                 friend: obj
             }
