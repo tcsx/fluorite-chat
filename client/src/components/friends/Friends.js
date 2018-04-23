@@ -61,9 +61,6 @@ class Friends extends Component {
               <div style={{overflow:'auto',height:"100%"}}>
 
                   <div style={{ marginTop: ".1rem" }} className="friend_lists">
-                        <div className="friend_list_logoWrap">
-                                <a href="/add_friend"><img className="friend_list_logo" src="./image/icon_friend.png" alt="Add New Friend" /></a>
-                            </div>
                       {this.props.list_arr.map((list,index) =>
                           <div onClick={()=>{this.toUserCard(list)}} key={index} className="friend_list">
                               <div className="friend_list_logoWrap">

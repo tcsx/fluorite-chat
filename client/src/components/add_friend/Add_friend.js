@@ -16,7 +16,7 @@ class Add_friend extends Component {
         value: '',
         search_lists: []
     };
-    
+
     successToast = function (value) {
         Toast.success(value, 1);
     }
@@ -26,7 +26,7 @@ class Add_friend extends Component {
     onSubmit = (value) => {
         if (!value) return this.setState({ search_lists: [] });
         // let self_username = window.store.getState().save_info.username;
-        axios.get(`/user/${this.props.user_info.id}/friend/${value}`).then((res) => {
+        axios.get(`/user/${this.props.user_info.id}/friends/${value}`).then((res) => {
             this.setState({ search_lists: res.data.userInfo });
         })
     }
@@ -40,15 +40,15 @@ class Add_friend extends Component {
     handleClick = () => {
         this.manualFocusInst.focus();
     }
-    onAdd_friend = ({username, _id}) => {
+    onAdd_friend = ({ username, _id }) => {
         // let _this = this;
-        let bool = this.props.save_info.friends.some((friend)=>{
-            if(friend.id==_id){
-                _this.failToast("He/She has been your friend！")
+        let bool = this.props.save_info.friends.some((friend) => {
+            if (friend.id == _id) {
+                this.failToast("He/She has been your friend！")
                 return true;
             }
         })
-        if(bool) return false;
+        if (bool) return false;
         // let firend = {
         //     username: obj.username,
         //     id: obj._id,
@@ -59,7 +59,7 @@ class Add_friend extends Component {
         //     self: _this.props.user_info,
         //     friend: firend
         // }
-        
+
         axios.put(`/user/${this.props.user_info.id}/friends/${_id}`).then(res => {
             if (res.data.status == 'success') {
                 this.props.dispatch({ type: "ADD_FRIEND", data: res.data })
@@ -93,11 +93,11 @@ class Add_friend extends Component {
                                 return (
                                     <div onClick={() => {
                                         this.onAdd_friend(obj)
-                                        }} key={index} className="friend_list">
+                                    }} key={index} className="friend_list">
                                         <div className="friend_list_logoWrap">
                                             <img className="friend_list_logo" src={obj.logo ? obj.logo : "./image/icon_moren_face.png"} alt="" />
                                         </div>
-                                        <div className="friend_name">{obj._id}</div>
+                                        <div className="friend_name">{obj.username}</div>
                                     </div>
                                 )
                             }, this)
@@ -119,7 +119,7 @@ function mapStateToProps(state) {
             nickname: state.save_info.nickname,
             id: state.save_info._id
         },
-        save_info : state.save_info
+        save_info: state.save_info
     }
 }
 

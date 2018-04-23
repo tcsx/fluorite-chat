@@ -66,13 +66,15 @@ app.post("/login", function (req, res) {
     });
 });
 // Search friend
-app.get("/user/:userId/friend/:friendName", (req, res) => {
+app.get("/user/:userId/friends/:friendName", (req, res) => {
     const { userId, friendName } = req.params;
-    let partten = new RegExp("^" + userId);
+    let pattern = new RegExp("^" + friendName);
     User.find({
-        userId: {
-            $regex: partten,
-            $ne: friendName
+        username: {
+            $regex: pattern,
+        },
+        _id: {
+            $ne: userId
         }
     }, (err, doc) => {
         if (doc) {
@@ -86,11 +88,11 @@ app.get("/user/:userId/friend/:friendName", (req, res) => {
 });
 
 // Add friend
-app.post('/user/:userId/friends/:friendId', (req, res) => {
+app.put('/user/:userId/friends/:friendId', (req, res) => {
     const { userId, friendId } = req.params;
-    User.update({ username: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() =>  res.send({
+    User.update({ _id: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() => res.send({
         status: "success",
-        message: "Login success"
+        message: "Add a friend successfully"
     }));
 
 });
