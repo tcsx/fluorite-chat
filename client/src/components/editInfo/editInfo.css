@@ -38,6 +38,9 @@
 }
 #editInfo .userInfo-content {
     padding-top:.12rem;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #editInfo .items-wrap {
     border-top:.01rem solid #e4e4e7;
