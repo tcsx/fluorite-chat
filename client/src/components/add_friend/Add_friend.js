@@ -61,13 +61,9 @@ class Add_friend extends Component {
         // }
 
         axios.put(`/user/${this.props.user_info.id}/friends/${_id}`).then(res => {
-            if (res.data.status == 'success') {
-                this.props.dispatch({ type: "ADD_FRIEND", data: res.data })
-                this.setState({ value: " ", search_lists: [] });
-                this.successToast("Add successfully！！");
-            } else {
-                this.failToast("Request fails！！！");
-            }
+            this.props.dispatch({ type: "ADD_FRIEND", data: res.data })
+            this.setState({ value: " ", search_lists: [] });
+            this.successToast("Add successfully！！");
         })
     }
     componentWillMount() {

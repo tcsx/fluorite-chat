@@ -70,7 +70,7 @@ class Friends extends Component {
 
         return (
             <div id="friends">
-                <Header field={{ title: 'Fluorite Chat', path: "/chatlist" }} />
+                <Header field={{ title: 'Fluorite Chat', path: "/friends" }} />
 
                 <NavBar />
                 <div id="rightBar">
