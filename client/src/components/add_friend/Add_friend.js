@@ -8,8 +8,10 @@ import axios from 'axios'
 class Add_friend extends Component {
     constructor(props) {
         super(props);
-
+        this.onAdd_friend = this.onAdd_friend.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
+
     state = {
         value: '',
         search_lists: []
@@ -22,10 +24,9 @@ class Add_friend extends Component {
         Toast.fail(value, 1);
     }
     onSubmit = (value) => {
-        let _this = this;
         if (!value) return this.setState({ search_lists: [] });
-        let self_username = window.store.getState().save_info.username;
-        axios.get(`/user/${self_username}/friend/${value}`).then((res) => {
+        // let self_username = window.store.getState().save_info.username;
+        axios.get(`/user/${this.props.user_info.id}/friend/${value}`).then((res) => {
             this.setState({ search_lists: res.data.userInfo });
         })
     }
@@ -39,29 +40,29 @@ class Add_friend extends Component {
     handleClick = () => {
         this.manualFocusInst.focus();
     }
-    onAdd_friend = (obj) => {
-        let _this = this;
+    onAdd_friend = ({username, _id}) => {
+        // let _this = this;
         let bool = this.props.save_info.friends.some((friend)=>{
-            if(friend.id==obj._id){
+            if(friend.id==_id){
                 _this.failToast("He/She has been your friend！")
                 return true;
             }
         })
         if(bool) return false;
-        let firend = {
-            username: obj.username,
-            id: obj._id,
-            nickname: obj.nickname,
-            logo: obj.logo
-        };
-        let data = {
-            self: _this.props.user_info,
-            friend: firend
-        }
+        // let firend = {
+        //     username: obj.username,
+        //     id: obj._id,
+        //     nickname: obj.nickname,
+        //     logo: obj.logo
+        // };
+        // let data = {
+        //     self: _this.props.user_info,
+        //     friend: firend
+        // }
         
-        axios.post('/makeFriend', data).then(res => {
+        axios.put(`/user/${this.props.user_info.id}/friends/${_id}`).then(res => {
             if (res.data.status == 'success') {
-                this.props.dispatch({ type: "ADD_FRIEND", data: data.friend })
+                this.props.dispatch({ type: "ADD_FRIEND", data: res.data })
                 this.setState({ value: " ", search_lists: [] });
                 this.successToast("Add successfully！！");
             } else {
@@ -92,11 +93,11 @@ class Add_friend extends Component {
                                 return (
                                     <div onClick={() => {
                                         this.onAdd_friend(obj)
-                                    }} key={index} className="friend_list">
+                                        }} key={index} className="friend_list">
                                         <div className="friend_list_logoWrap">
                                             <img className="friend_list_logo" src={obj.logo ? obj.logo : "./image/icon_moren_face.png"} alt="" />
                                         </div>
-                                        <div className="friend_name">{obj.username}</div>
+                                        <div className="friend_name">{obj._id}</div>
                                     </div>
                                 )
                             }, this)

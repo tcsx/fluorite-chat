@@ -1,18 +1,23 @@
-let express = require("express");
-let app = express();
-let path = require("path");
-let bodyParser = require("body-parser")
-let multer = require('multer');
-let http = require('http').Server(app);
-let io = require('socket.io')(http);
-let mongoose = require('./mongo/mongodb.js');
-app.use(bodyParser.json())
+const express = require("express");
+const app = express();
+const path = require("path");
+const bodyParser = require("body-parser")
+const multer = require('multer');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const mongoose = require('./mongo/mongodb.js');
+require('./mongo/models/User');
+
+app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-let upload = multer({ dest: '../wechat/public/logos' });
-let User = require("./mongo/models/user.js");
+const upload = multer({ dest: '../wechat/public/logos' });
 
-let online_arr = [];
+const User = mongoose.model('User');
+
+
+
+const online_arr = [];
 
 // register
 
@@ -27,26 +32,18 @@ app.post("/register", function (req, res) {
                     status: 'success',
                     message: "login success",
                     userInfo: doc
-                })
-            })
+                });
+            });
         } else {
-            res.send("Username has already been exsisted！")
+            res.send("Username already exsists！");
         }
     });
 });
 // login
 app.post("/login", function (req, res) {
-    var conn = {
-        'username': req.body.username
-    }
-    // if(online_arr.indexOf(req.body.username)>=0){
-    //     res.json({
-    //             status: 'error',
-    //             message: "User is online"
-    //         })
-    //         return;
-    // }
-    User.findOne(conn, function (err, doc) {
+    User.findOne({
+        username: req.body.username
+    }, (err, doc) => {
         if (!doc || doc.length < 1) {
             res.json({
                 status: "error",
@@ -56,7 +53,7 @@ app.post("/login", function (req, res) {
             res.json({
                 status: "error",
                 message: "Wrong password！"
-            })
+            });
         } else {
             // user = doc;
             online_arr.push(doc.username);
@@ -64,23 +61,20 @@ app.post("/login", function (req, res) {
                 status: 'success',
                 message: "Login success",
                 userInfo: doc
-            })
+            });
         }
-    })
-
-})
+    });
+});
 // Search friend
-app.get("/user/:userName/friend/:friendName", (req, res) => {
-    const {username, friendName} = req.params;
-    let partten = new RegExp("^" + username);
-    let conn = {
-        username: {
+app.get("/user/:userId/friend/:friendName", (req, res) => {
+    const { userId, friendName } = req.params;
+    let partten = new RegExp("^" + userId);
+    User.find({
+        userId: {
             $regex: partten,
             $ne: friendName
         }
-    };
-
-    User.find(conn, (err, doc) => {
+    }, (err, doc) => {
         if (doc) {
             res.json({
                 status: "success",
@@ -92,20 +86,12 @@ app.get("/user/:userName/friend/:friendName", (req, res) => {
 });
 
 // Add friend
-app.post('/makeFriend', (req, res) => {
-
-    let self = req.body.self;
-    let friend = req.body.friend;
-
-    User.update({ _id: friend.id }, { $addToSet: { friends: self } }, (err, doc) => {
-
-    });
-    User.update({ _id: self.id }, { $addToSet: { friends: friend } }, (err, doc) => {
-        res.json({
-            status: "success",
-            message: "Login success"
-        });
-    });
+app.post('/user/:userId/friends/:friendId', (req, res) => {
+    const { userId, friendId } = req.params;
+    User.update({ username: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() =>  res.send({
+        status: "success",
+        message: "Login success"
+    }));
 
 });
 
@@ -120,10 +106,10 @@ app.post("/uploadLogo", upload.single("avatar"), (req, res) => {
 });
 
 // Change username
-app.post("/savenickname",(req,res)=>{
-    User.update({_id:req.body.id},{$set:{nickname:req.body.nickname}},function(){
+app.post("/savenickname", (req, res) => {
+    User.update({ _id: req.body.id }, { $set: { nickname: req.body.nickname } }, function () {
         res.send({
-            status:'success'
+            status: 'success'
         });
     });
 });

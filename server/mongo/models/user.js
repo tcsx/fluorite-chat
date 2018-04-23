@@ -1,11 +1,11 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let loginSchema = new Schema({
+let userSchema = new Schema({
     username: String,
     password: String,
     nickname: String,
-    friends: Array,
+    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     logo: {
         type: String,
         default: './image/icon_moren_face.png'
@@ -13,6 +13,4 @@ let loginSchema = new Schema({
     rooms: Array
 });
 
-let User = mongoose.model('user', loginSchema);
-
-module.exports = User;
+let User = mongoose.model('User', userSchema);
