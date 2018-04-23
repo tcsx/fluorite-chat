@@ -5,12 +5,12 @@ import 'antd-mobile/dist/antd-mobile.css';
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux';
 
-import { Provider } from 'react-redux'
-import Reducer from './redux/reducers'
+import { Provider } from 'react-redux';
+import Reducer from './redux/reducers';
 
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk';
 
 const store = createStore(
   Reducer, /* preloadedState, */
@@ -20,7 +20,7 @@ window.store = store;
 
 let unsubscribe = store.subscribe((data) =>
   console.log(store.getState())
-)
+);
 ReactDOM.render((
   <Provider store={store} >
     <App />

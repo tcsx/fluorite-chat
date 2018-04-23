@@ -20,9 +20,9 @@ import {
   Route,
   Redirect,
   Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-window.socket = io('http://localhost:8888')
+window.socket = io('http://localhost:8888');
 
 class App extends Component {
 
@@ -38,7 +38,7 @@ class App extends Component {
             }} />
           )
       )} />
-    )
+    );
 
     return (
       <Router>
