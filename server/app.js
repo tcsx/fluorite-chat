@@ -32,9 +32,8 @@ app.post("/register", function (req, res) {
         } else {
             res.send("Username has already been exsisted！")
         }
-    })
-
-})
+    });
+});
 // login
 app.post("/login", function (req, res) {
     var conn = {
@@ -78,7 +77,7 @@ app.post("/getUsers", (req, res) => {
             $regex: partten,
             $ne: req.body.self_username
         }
-    }
+    };
 
     User.find(conn, (err, doc) => {
         if (doc) {
@@ -86,10 +85,11 @@ app.post("/getUsers", (req, res) => {
                 status: "success",
                 message: "Search success",
                 userInfo: doc
-            })
+            });
         }
-    }).limit(5)
-})
+    }).limit(5);
+});
+
 // Add friend
 app.post('/makeFriend', (req, res) => {
 
@@ -98,15 +98,15 @@ app.post('/makeFriend', (req, res) => {
 
     User.update({ _id: friend.id }, { $addToSet: { friends: self } }, (err, doc) => {
 
-    })
+    });
     User.update({ _id: self.id }, { $addToSet: { friends: friend } }, (err, doc) => {
         res.json({
             status: "success",
             message: "Login success"
-        })
-    })
+        });
+    });
 
-})
+});
 
 // upload figure
 app.post("/uploadLogo", upload.single("avatar"), (req, res) => {
@@ -114,18 +114,18 @@ app.post("/uploadLogo", upload.single("avatar"), (req, res) => {
         res.send({
             status: "success",
             url: './logos/' + req.file.filename
-        })
-    })
-})
+        });
+    });
+});
 
 // Change username
 app.post("/savenickname",(req,res)=>{
     User.update({_id:req.body.id},{$set:{nickname:req.body.nickname}},function(){
         res.send({
             status:'success'
-        })
-    })
-})
+        });
+    });
+});
 
 
 
