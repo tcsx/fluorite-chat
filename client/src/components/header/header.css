@@ -1,0 +1,35 @@
+#header {
+    height:60px;
+    width:100%;
+    font-size: 29px;
+    line-height: 70px;
+    text-align: center;
+    text-indent: 20px;
+    float:right;
+    font-family: Papyrus, fantasy;
+    background: #373E46;
+    color:#ADADAD;
+    flex:0;
+    position: absolute;
+    left:0;
+    top:0;
+}
+#header .right {
+    position: absolute;
+    top:0;
+    right:0.15rem;
+    font-size: .24rem;
+    color:#fff;
+    text-decoration: none;
+}
+#header .left {
+    position: absolute;
+    top:0;
+    left:0.1rem;
+    font-size: .16rem;
+    color:#fff;
+    text-decoration: none;
+}
+#header input {
+    display: none;
+}

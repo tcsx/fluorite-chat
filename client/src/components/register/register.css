@@ -1,0 +1,88 @@
+#register {
+    background: #373E46;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.close {
+    position: absolute;
+    left:20px;
+    top:20px;
+    font-size: 10px;
+    color:#000;
+}
+.form{
+  width: 500px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  position: relative;
+
+}
+.slogan{
+  font-family: fantasy;
+  font-size: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+.inputArea{
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+}
+input[type="text"] {
+  padding: 30px;
+  margin-top: 200px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+input[type="password"] {
+  padding: 30px;
+  margin-top: 10px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+input[type="nickname"]{
+  padding: 30px;
+  margin-top: 10px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+.signup_btn{
+  height: 60px;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 40px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+  background-color: #5882FA;
+  color: #fff;
+  font-size: 20px;
+}
+.more-option {
+    font-size: 18px;
+    align-self: flex-end;
+    position:absolute;
+    bottom:.1rem;
+    left:50%;
+    transform: translateX(-50%);
+}
