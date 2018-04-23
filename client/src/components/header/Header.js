@@ -21,7 +21,7 @@ class Header extends Component {
         Left = <Link to="/friends" className="left iconfont icon-back">ContactList</Link>;
         break;
       case "/editInfo":
-        Left = <Link to="/user" className="left iconfont icon-back">Me</Link>;
+        Left = <Link to="/chatlist" className="left iconfont icon-back">Me</Link>;
         break;
       case "/uploadLogo":
         Left = <Link to="/editInfo" className="left iconfont icon-back">PersonalInfo</Link>;
@@ -35,18 +35,11 @@ class Header extends Component {
 
     let Right = null;
     switch (this.props.field.path) {
+      
       case "/friends":
         Right = <Link to="/add_friend" className="right iconfont icon-add_friend" />;
         break;
-      case "/chatlist":
-        Right = <Link to="/more" className="right iconfont icon-more" />;
-        break;
-      case "/userCard":
-        Right = <Link to="/infoSetting" className="right iconfont icon-info_setting" />;
-        break;
-      case "/chat":
-        Right = <Link to="/infoSetting" className="right iconfont icon-chat_detail" />;
-        break;
+
       case "/uploadLogo":
         Right = <label className="right iconfont icon-upload" ><input name="avatar" accept='image/*' onChange={this.props.onUpload} type="file"/></label>;
         break;
