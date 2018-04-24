@@ -8,6 +8,8 @@ import Header from '../header/Header.js'
 class Chat extends Component {
     constructor(props) {
         super(props);
+        this.onSend = this.onSend.bind(this);
+        this.onBack = this.onBack.bind(this);
         this.state = {
             chat_person: []
         }
@@ -119,7 +121,7 @@ class Chat extends Component {
     }
 
     render() {
-        let self_room = this.props.self_rooms[this.state.chat_person.id];
+        let self_room = this.props.self_rooms[this.state.chat_person._id];
 
         return (
             <div className="chat">

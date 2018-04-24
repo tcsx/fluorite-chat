@@ -51,7 +51,7 @@ class Chatlist extends Component {
 
     window.socket.on("common_message", function (from_id, to_id, data) {
       if (window.location.pathname == "/chat" || to_id != _this.props.self_id) return false;
-      let from_person = _this.props.friends.find(o => o.id == from_id);
+      let from_person = _this.props.friends.find(o => o._id == from_id);
 console.log(from_id,'from_id')
       let info_data = {
         room_id: from_id,

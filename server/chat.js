@@ -14,7 +14,7 @@ let io = require('socket.io')(app);
 //     res.header('Access-Control-Allow-Headers', 'Content-Type');
 //     next();
 // });
-app.listen(8888);
+app.listen(3000);
 
 function handler(req, res) {
 

@@ -22,7 +22,8 @@ import {
   Switch
 } from 'react-router-dom';
 
-window.socket = io('http://localhost:8888');
+// window.socket = io('http://localhost:8899');
+window.socket = io('http://localhost:3000');
 
 class App extends Component {
 
