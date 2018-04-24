@@ -36,4 +36,4 @@ And if you download code here, you should:
 
 Thank you very much and hope you can enjoy yourself!  
 Created by team fluorite, Apr 23!  
-ps:here is our heroku link:https://fluorite-chat.herokuapp.com/
+ps:here is our heroku link:http://new-fluorite-chat.herokuapp.com/
