@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import Login from './components/login/Login'
-import Register from './components/register/Register'
-import Chatlist from './components/chatlist/Chatlist'
-import Friends from './components/friends/Friends.js'
-import Search from './components/search/Search.js'
-import User from './components/user/user.js'
-import UserCard from './components/usercard/UserCard.js'
-import Add_friend from './components/add_friend/Add_friend.js'
-import Chat from './components/chat/Chat.js'
-import EditInfo from './components/editInfo/EditInfo.js'
-import UploadLogo from './components/uploadLogo/UploadLogo.js'
-import ResetInfo from './components/resetInfo/ResetInfo.js'
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+import Chatlist from './components/chatlist/Chatlist';
+import Friends from './components/friends/Friends.js';
+import Search from './components/search/Search.js';
+import User from './components/user/user.js';
+import UserCard from './components/usercard/UserCard.js';
+import Add_friend from './components/add_friend/Add_friend.js';
+import Chat from './components/chat/Chat.js';
+import EditInfo from './components/editInfo/EditInfo.js';
+import UploadLogo from './components/uploadLogo/UploadLogo.js';
+import ResetInfo from './components/resetInfo/ResetInfo.js';
 
-import * as io from 'socket.io-client'
+import * as io from 'socket.io-client';
 
 
 import {

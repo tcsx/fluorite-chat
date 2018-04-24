@@ -18,9 +18,6 @@ const store = createStore(
 );
 window.store = store;
 
-let unsubscribe = store.subscribe((data) =>
-  console.log(store.getState())
-);
 ReactDOM.render((
   <Provider store={store} >
     <App />

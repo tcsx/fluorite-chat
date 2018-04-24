@@ -21,13 +21,6 @@ class Chat extends Component {
         this.setState({
             chat_person: this.props.history.location.params.friend
         });
-        // for (const key in this.props.history.location.params.friend) {
-        //     if (this.props.history.location.params.friend.hasOwnProperty(key)) {
-        //         const element = this.props.history.location.params.friend[key];
-        //         console.log(`\n\n\n\nthis.props.history.location.params.friend.${key}: \n\n` + element);
-                
-        //     }
-        // }
 
         let html = "",
             message_wrap = document.getElementById("message-wrap"),
