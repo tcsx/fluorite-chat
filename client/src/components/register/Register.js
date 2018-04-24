@@ -93,7 +93,7 @@ class Register extends Component {
     return (
 
       <div id="register">
-        <Link to="/login" ><div className="switch_button">Login</div></Link>
+       
         <div class='form'>
           <p class="slogan">Welcome to Fluorite Chat!</p>
            <div class="inputArea">
