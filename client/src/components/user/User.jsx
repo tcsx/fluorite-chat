@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import './user.css'
-import Header from '../header/Header.js'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import './user.css';
+import Header from '../header/Header';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class User extends Component {
     render() {

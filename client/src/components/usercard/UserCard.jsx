@@ -1,10 +1,10 @@
-import React,{Component} from 'react'
-import './userCard.css'
-import Header from '../header/Header.js'
-import axios from 'axios'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Toast } from 'antd-mobile'
+import React,{Component} from 'react';
+import './userCard.css';
+import Header from '../header/Header';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Toast } from 'antd-mobile';
 
 class InfoCard extends Component {
     constructor(props){
