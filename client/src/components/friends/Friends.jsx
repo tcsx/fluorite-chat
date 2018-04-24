@@ -17,17 +17,17 @@ class Friends extends Component {
 
     toUserCard = (obj) => {
         this.props.history.push({
-            pathname: '/userCard',
+            pathname: '/chat',
             params: {
                 friend: obj
             }
         });
     }
     successToast = function () {
-        Toast.success('Load success !!!', 1);
+        Toast.success("Successfully deleted!", 1);
     }
     failToast = function () {
-        Toast.fail('Load failed !!!', 1);
+        Toast.fail("Request failed", 1);
     }
     onSubmit = (value) => {
         let _this = this;
@@ -44,15 +44,28 @@ class Friends extends Component {
     clear = () => {
         this.setState({ value: '' });
     }
+    toDelete= (obj) => {
+        let friend_id = obj._id;
+        let user_id = this.props.user_info.id;
+        axios.delete(`/user/${user_id}/friends/${friend_id}`).then(res => {
+            if (res.data === 'Deleted') {
+                this.successToast();
+            } else {
+                this.failToast();
+            }
+        });
+    }
 
 
     renderFriends() {
         return this.props.friends.map((friend, index) =>
-                                <div onClick={() => { this.toUserCard(friend) }} key={index} className="friend_list">
+                                <div key={index} className="friend_list">
                                     <div className="friend_list_logoWrap">
                                         <img className="friend_list_logo" src={friend.logo} alt="" />
                                     </div>
                                     <div className="friend_name">{friend.nickname}</div>
+                                    <div className = 'green_button' onClick={() => { this.toUserCard(friend) }}>Send</div>
+                                    <div className = 'red_button' onClick={() => { this.toDelete(friend) }}>Delete</div>
                                 </div>
                                 , this);
     }
@@ -81,7 +94,12 @@ class Friends extends Component {
 
 function mapStateToProps(state) {
     const { friends, groups, logo, _id } = state.save_info;
-    return { friends, groups, logo, _id };
+    return { friends, groups, logo, _id, user_info: {
+        logo: state.save_info.logo,
+        username: state.save_info.username,
+        nickname: state.save_info.nickname,
+        id: state.save_info._id
+    } };
 }
 
 export default connect(mapStateToProps)(Friends);
