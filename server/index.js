@@ -7,9 +7,7 @@ const mongoose = require('./mongo/mongodb.js');
 require('./mongo/models/user');
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(multer().single('avatar'));
-const upload = multer({ dest: './client/build/logos' });
+const upload = multer({ dest: './client/public/logos' });
 
 const User = mongoose.model('User');
 
@@ -100,10 +98,10 @@ app.delete('/user/:userId/friends/:friendId', (req, res) => {
 
 // upload figure
 app.post("/uploadLogo", upload.single('avatar'), (req, res) => {
-    User.update({ _id: req.body.id }, { $set: { logo: './logos/' + req.file.filename } }, function () {
+    User.update({ _id: req.body.id }, { $set: { logo: './public/logos/' + req.file.filename } }, function () {
         res.send({
             status: "success",
-            url: './logos/' + req.file.filename
+            url: './public/logos/' + req.file.filename
         });
     });
 });
@@ -117,16 +115,8 @@ app.post("/savenickname", (req, res) => {
     });
 });
 
-// app.get("/user/:userId/friends", (req, res) => {
-//     const { userId } = req.params;
-//     User.findById(userId, {
-//         'friends': 1,
-//         '_id': 0
-//     }).populate('friends', ['logo', 'username', 'nickname']).then(friends => res.send(friends.friends)).catch(console.log);
-// });
-
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static('client'));
 
     const path = require('path');
     app.get('*', (req, res) => {
