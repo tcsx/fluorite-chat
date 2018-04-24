@@ -1,0 +1,88 @@
+#login {
+    background: #373E46;
+    justify-content:center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.close {
+    position: absolute;
+    left:20px;
+    top:20px;
+    font-size: 40px;
+    color:#000;
+}
+.form{
+  width: 500px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+}
+.slogan{
+  font-family: fantasy;
+  font-size: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+.inputArea{
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+}
+input[type="text"] {
+  padding: 30px;
+  margin-top: 10px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+input[type="password"] {
+  padding: 30px;
+  margin-top: 90px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+
+.login_btn{
+  height: 60px;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 40px;
+  position: absolute;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+  background-color: #5882FA;
+  color: #fff;
+  font-size: 20px;
+}
+.more-option {
+    font-size: 18px;
+    align-self: flex-end;
+    position:absolute;
+    bottom:.1rem;
+    left:50%;
+    transform: translateX(-50%);
+}
+.switch_button{
+  position: absolute;
+  right:20%;
+  width: 5%;
+  height: .15rem;
+  text-align: center;
+  border: .02rem solid #1caf08;
+  border-radius: .05rem;
+  line-height: .10rem;
+  background: #1caf08;
+  color: #fff;
+  font-size: 90%;
+}

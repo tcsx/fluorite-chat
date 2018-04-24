@@ -1,0 +1,38 @@
+#root #friends {
+    font-size: 23px;
+    text-align: right;
+    position:relative;
+}
+#rightBar{
+  left:220px;
+  position: relative;
+}
+.friend_lists {
+    background-color: #fff;
+    padding-left:100px;
+}
+.friend_lists .friend_list:last-of-type {
+    border:none;
+}
+.friend_list .friend_list_logo {
+    width:0.36px;
+    height:.36px;
+}
+.friend_list {
+    height:0.55px;
+    border-bottom:.01px solid #d9d9d9;
+    display: flex;
+}
+.friend_list_logoWrap {
+    flex-grow: 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.friend_name {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 0.1px;
+    font-size: .15px;
+    line-height: .54px;
+}

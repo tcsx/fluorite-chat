@@ -4,14 +4,18 @@
   "description": "online chat application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/app.js ./server/chat.js",
+    "server": "nodemon ./server/app.js ./server/chat.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/seainfo6250/project-fluorite.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mengying Wu, Sihan Zhao, Jianan Lin, Xuhan Shan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/seainfo6250/project-fluorite/issues"
@@ -19,6 +23,7 @@
   "homepage": "https://github.com/seainfo6250/project-fluorite#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "express": "^4.16.3",
     "mongoose": "^5.0.15",
     "multer": "^1.3.0",
     "socket.io": "^2.1.0"

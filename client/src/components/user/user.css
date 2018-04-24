@@ -1,0 +1,21 @@
+#user .userInfo-content {
+    padding-top:12px;
+
+}
+#user .logo-wrap {
+    width:90px;
+    height:90px;
+    left: 55px;
+    position: relative;
+    border-radius: .03rem;
+    overflow: hidden;
+    flex-grow: 0;
+}
+#user .logo-wrap img {
+    height:100%;
+    width:100%;
+}
+.textWrap{
+  margin-top: 20px;
+  color:#ADADAD;
+}
