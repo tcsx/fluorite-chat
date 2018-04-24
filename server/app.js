@@ -11,7 +11,7 @@ require('./mongo/models/User');
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-const upload = multer({ dest: './client/public/logos' });
+const upload = multer({ dest: './client/build/logos' });
 
 const User = mongoose.model('User');
 
