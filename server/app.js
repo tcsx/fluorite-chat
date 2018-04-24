@@ -6,7 +6,7 @@ const multer = require('multer');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('./mongo/mongodb.js');
-require('./mongo/models/User');
+require('./mongo/models/user');
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
