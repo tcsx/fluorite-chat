@@ -93,7 +93,6 @@ class Register extends Component {
     return (
 
       <div id="register">
-       
         <div class='form'>
           <p class="slogan">Welcome to Fluorite Chat!</p>
            <div class="inputArea">
