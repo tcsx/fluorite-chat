@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 const multer = require('multer');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -11,7 +11,7 @@ require('./mongo/models/User');
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-const upload = multer({'./client/public/logos' });
+const upload = multer({ dest: './client/public/logos' });
 
 const User = mongoose.model('User');
 
@@ -91,7 +91,7 @@ app.get("/user/:userId/friends/:friendName", (req, res) => {
 // Add friend
 app.put('/user/:userId/friends/:friendId', (req, res) => {
     const { userId, friendId } = req.params;
-    User.update({ _id: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() => User.findById(friendId, {'logo': 1, 'username': 1, 'nickname': 1})).then(friend => res.send(friend)).catch(console.log);
+    User.update({ _id: userId }, { $addToSet: { friends: friendId } }).exec().then(() => User.update({ _id: friendId }, { $addToSet: { friends: userId } }).exec()).then(() => User.findById(friendId, { 'logo': 1, 'username': 1, 'nickname': 1 })).then(friend => res.send(friend)).catch(console.log);
 });
 
 //{ $pull: { fruits: { $in: [ "apples", "oranges" ] }
@@ -129,10 +129,10 @@ app.post("/savenickname", (req, res) => {
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
-  
+
     const path = require('path');
     app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
 
