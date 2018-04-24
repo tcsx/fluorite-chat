@@ -1,5 +1,6 @@
-let app = require('http').createServer(handler)
-let io = require('socket.io')(app);
+const app = require('./app');
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 // var express = require("express");
 // var app = express();
@@ -14,13 +15,13 @@ let io = require('socket.io')(app);
 //     res.header('Access-Control-Allow-Headers', 'Content-Type');
 //     next();
 // });
-const PORT = process.env.PORT || 4000;
-app.listen(PORT);
+// const PORT = process.env.PORT || 4000;
+// app.listen(PORT);
 
 
-function handler(req, res) {
+// function handler(req, res) {
 
-}
+// }
 
 
 let arrAllSocket = {};

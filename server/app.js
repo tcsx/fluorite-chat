@@ -11,7 +11,7 @@ require('./mongo/models/User');
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-const upload = multer({ dest: __dirname + '../client/public/logos' });
+const upload = multer({'./client/public/logos' });
 
 const User = mongoose.model('User');
 
@@ -138,3 +138,4 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT);
+module.exports = app;
