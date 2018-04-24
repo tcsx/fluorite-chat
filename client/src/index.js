@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'antd-mobile/dist/antd-mobile.css';
 import registerServiceWorker from './registerServiceWorker';
-import App from './App';
+import App from './components/App';
 
 import { createStore, applyMiddleware } from 'redux';
 
