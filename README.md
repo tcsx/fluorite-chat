@@ -22,6 +22,10 @@ This is an onlien one to one chat application and will support the following fun
 * Delete a friend.
 * Log out.
 
+
+![image](https://github.com/seainfo6250/project-fluorite/blob/master/showFunction1.gif) 
+
+![image](https://github.com/seainfo6250/project-fluorite/blob/master/showFunction2.gif)  
 ### 
 And if you download code here, you should:  
 1. `npm install` at `./project-fluorite/client`.
