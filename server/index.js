@@ -4,7 +4,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const multer = require('multer');
 const mongoose = require('./mongo/mongodb.js');
-require('./mongo/models/user');
+require('./mongo/models/User');
 
 app.use(bodyParser.json());
 const upload = multer({ dest: './client/public/logos' });

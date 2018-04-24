@@ -4,7 +4,7 @@ import Register from './register/Register';
 import Chatlist from './chatlist/Chatlist';
 import Friends from './friends/Friends';
 import Search from './search/Search';
-import User from './user/user';
+import User from './user/User';
 import UserCard from './usercard/UserCard';
 import Add_friend from './add_friend/Add_friend';
 import Chat from './chat/Chat';
