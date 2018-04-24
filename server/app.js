@@ -11,7 +11,7 @@ require('./mongo/models/User');
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-const upload = multer({ dest: '../client/public/logos' });
+const upload = multer({ dest: __dirname + '../client/public/logos' });
 
 const User = mongoose.model('User');
 
@@ -127,6 +127,14 @@ app.post("/savenickname", (req, res) => {
 //     }).populate('friends', ['logo', 'username', 'nickname']).then(friends => res.send(friends.friends)).catch(console.log);
 // });
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+  
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
-
-app.listen(4000);
+const PORT = process.env.PORT || 4000;
+app.listen(PORT);

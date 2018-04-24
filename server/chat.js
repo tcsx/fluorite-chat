@@ -14,7 +14,9 @@ let io = require('socket.io')(app);
 //     res.header('Access-Control-Allow-Headers', 'Content-Type');
 //     next();
 // });
-app.listen(3000);
+const PORT = process.env.PORT || 4000;
+app.listen(PORT);
+
 
 function handler(req, res) {
 
