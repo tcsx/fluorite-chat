@@ -89,7 +89,6 @@ class Login extends Component {
   render() {
     return (
       <div id="login">
-        <Link to="/register" ><div className="switch_button">Register</div></Link>
         <div className='form'>
           <p class="slogan">Welcome to Fluorite Chat!</p>
           <div className="inputArea">
