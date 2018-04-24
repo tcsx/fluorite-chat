@@ -37,7 +37,7 @@ class Chatlist extends Component {
     this.setState({ value: '' });
   }
   toChat = (id) => {
-    let obj = this.props.friends.find(o => o.id == id)
+    let obj = this.props.friends.find(o => o._id == id)
     this.props.history.push({
       pathname: "/chat",
       params: {

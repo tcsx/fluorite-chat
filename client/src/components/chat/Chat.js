@@ -19,10 +19,17 @@ class Chat extends Component {
         this.setState({
             chat_person: this.props.history.location.params.friend
         });
+        // for (const key in this.props.history.location.params.friend) {
+        //     if (this.props.history.location.params.friend.hasOwnProperty(key)) {
+        //         const element = this.props.history.location.params.friend[key];
+        //         console.log(`\n\n\n\nthis.props.history.location.params.friend.${key}: \n\n` + element);
+                
+        //     }
+        // }
 
         let html = "",
             message_wrap = document.getElementById("message-wrap"),
-            friend_id = this.props.history.location.params.friend.id,
+            friend_id = this.props.history.location.params.friend._id,
             infos = this.props.self_rooms.find(o => o[friend_id]) ? this.props.self_rooms.find(o => o[friend_id])[friend_id] : [];
 
         for (let i = 0; i < infos.length; i++) {
@@ -71,7 +78,7 @@ class Chat extends Component {
 
             div.className = "self_message message animate_right";
             div.innerHTML = '<div class="message-logo-wrap"><img src="' + this.props.self_logo + '"/></div><div class="message-info-wrap">' + msg + '</div>';
-            window.socket.emit('private_message', _this.props.self_id, _this.state.chat_person.id, msg);
+            window.socket.emit('private_message', _this.props.self_id, _this.state.chat_person._id, msg);
             this.refs.textarea.value = "";
 
         } else {
@@ -83,7 +90,7 @@ class Chat extends Component {
 
 
         let read_bool = false;
-        if (message_wrap && (self || from_id===this.state.chat_person.id) ){
+        if (message_wrap && (self || from_id===this.state.chat_person._id) ){
             message_wrap.appendChild(div);
             div.scrollIntoView();
 
@@ -92,7 +99,7 @@ class Chat extends Component {
 
 
         let data = {
-            room_id: this.state.chat_person.id,
+            room_id: this.state.chat_person._id,
             nickname: this.state.chat_person.nickname,
             date: new Date().getTime(),
             info: msg,

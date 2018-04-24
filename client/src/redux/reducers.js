@@ -30,11 +30,13 @@ function save_info(state = {}, action) {
 }
 
 
-function add_chats(state = [], action) {
-    let room_key = action.data.room_id,
-        room_index = state.findIndex(T => T[room_key]);
+function add_chats(rooms = [], action) {
+    console.log({action});
+    let room_key = action.data.room_id;
+    console.log('\n\n\n\n' + rooms);
+    let room_index = rooms.findIndex(element => element && element[room_key]);
 
-    let new_arr = JSON.parse(JSON.stringify(state));
+    let new_arr = JSON.parse(JSON.stringify(rooms));
     if (room_index > -1) {
         new_arr[room_index][room_key].push(action.data);
         return new_arr;

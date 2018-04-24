@@ -11,7 +11,7 @@ require('./mongo/models/User');
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(multer().single('avatar'));
-const upload = multer({ dest: '../wechat/public/logos' });
+const upload = multer({ dest: '../client/public/logos' });
 
 const User = mongoose.model('User');
 
@@ -43,7 +43,7 @@ app.post("/register", function (req, res) {
 app.post("/login", function (req, res) {
     User.findOne({
         username: req.body.username
-    }, (err, doc) => {
+    }).populate('friends', ['logo', 'username', 'nickname']).exec((err, doc) => {
         if (!doc || doc.length < 1) {
             res.json({
                 status: "error",
@@ -64,6 +64,30 @@ app.post("/login", function (req, res) {
             });
         }
     });
+
+    // User.findOne({
+    //     username: req.body.username
+    // }, (err, doc) => {
+    //     if (!doc || doc.length < 1) {
+    //         res.json({
+    //             status: "error",
+    //             message: "User has not been exsisted"
+    //         });
+    //     } else if (doc.password != req.body.password) {
+    //         res.json({
+    //             status: "error",
+    //             message: "Wrong password！"
+    //         });
+    //     } else {
+    //         // user = doc;
+    //         online_arr.push(doc.username);
+    //         res.json({
+    //             status: 'success',
+    //             message: "Login success",
+    //             userInfo: doc
+    //         });
+    //     }
+    // });
 });
 // Search friend
 app.get("/user/:userId/friends/:friendName", (req, res) => {
@@ -100,7 +124,7 @@ app.delete('/user/:userId/friends/:friendId', (req, res) => {
 });
 
 // upload figure
-app.post("/uploadLogo", upload.single("avatar"), (req, res) => {
+app.post("/uploadLogo", upload.single('avatar'), (req, res) => {
     User.update({ _id: req.body.id }, { $set: { logo: './logos/' + req.file.filename } }, function () {
         res.send({
             status: "success",
