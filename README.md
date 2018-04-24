@@ -29,7 +29,7 @@ This is an onlien one to one chat application and will support the following fun
 ### 
 And if you download code here, you should:  
 1. `npm install` at `./project-fluorite/client`.
-2. `npm install` at `./project-fluorite/server`.
+2. `npm install` at `./project-fluorite`.
 3. start your Mongodb.
 4. `npm run start` at `./project-fluorite`.
 5. `npm start` at `./project-fluorite/client`.
