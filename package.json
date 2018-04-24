@@ -2,10 +2,6 @@
   "name": "project-fluorite",
   "version": "1.0.0",
   "description": "online chat application",
-  "engines": {
-    "node": "^8.9.0",
-    "npm": "^5.5.1"
-  },
   "main": "index.js",
   "scripts": {
     "start": "node ./server/app.js ./server/chat.js",
@@ -19,7 +15,7 @@
     "url": "git+https://github.com/seainfo6250/project-fluorite.git"
   },
   "keywords": [],
-  "author": "Mengying Wu, Sihan Zhao, Jianan Lin",
+  "author": "Mengying Wu, Sihan Zhao, Jianan Lin, Xuhan Shan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/seainfo6250/project-fluorite/issues"
