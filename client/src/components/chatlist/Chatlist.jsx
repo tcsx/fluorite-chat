@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './chatlist.css'
-import Header from '../header/Header.js';
-import NavBar from '../navBar/navBar.js';
-import List from './List.js'
-import { connect } from 'react-redux'
+import Header from '../header/Header';
+import NavBar from '../navBar/navBar';
+import List from './List';
+import { connect } from 'react-redux';
 import { SearchBar, Toast } from 'antd-mobile';
 import axios from 'axios'
 
@@ -37,7 +37,7 @@ class Chatlist extends Component {
     this.setState({ value: '' });
   }
   toChat = (id) => {
-    let obj = this.props.friends.find(o => o._id == id)
+    let obj = this.props.friends.find(o => o._id === id)
     this.props.history.push({
       pathname: "/chat",
       params: {
@@ -50,8 +50,8 @@ class Chatlist extends Component {
     let _this = this;
 
     window.socket.on("common_message", function (from_id, to_id, data) {
-      if (window.location.pathname == "/chat" || to_id != _this.props.self_id) return false;
-      let from_person = _this.props.friends.find(o => o._id == from_id);
+      if (window.location.pathname === "/chat" || to_id !== _this.props.self_id) return false;
+      let from_person = _this.props.friends.find(o => o._id === from_id);
 console.log(from_id,'from_id')
       let info_data = {
         room_id: from_id,

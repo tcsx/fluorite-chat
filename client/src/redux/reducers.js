@@ -11,11 +11,12 @@ function save_info(state = {}, action) {
             return { ...state, friends: [...state.friends, action.data] };
         case HAS_READ:
             return Object.assign({}, state, {
-                rooms: JSON.parse(JSON.stringify(state.rooms)).map(obj => {
-                    if (obj[action.user]) {
-                        obj[action.user].map(o => o.has_read = true);
-                        return;
+                rooms: JSON.parse(JSON.stringify(state.rooms)).map(room => {
+                    if (room[action.user]) {
+                        room[action.user].map(user => user.has_read = true);
+                        return room;
                     }
+                    return room;
                 })
             });
         case ADD_CHATS:

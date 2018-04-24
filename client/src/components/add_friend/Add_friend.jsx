@@ -1,9 +1,9 @@
-import React, { Component } from "react"
-import './add_friend.css'
-import Header from '../header/Header.js'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import './add_friend.css';
+import Header from '../header/Header';
+import { connect } from 'react-redux';
 import { SearchBar, Toast } from 'antd-mobile';
-import axios from 'axios'
+import axios from 'axios';
 
 class Add_friend extends Component {
     constructor(props) {

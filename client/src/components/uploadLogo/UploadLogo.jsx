@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import './uploadLogo.css'
-import Header from '../header/Header.js'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import './uploadLogo.css';
+import Header from '../header/Header';
+import { connect } from 'react-redux';
 import { ActionSheet, Toast } from 'antd-mobile';
-import axios from 'axios'
+import axios from 'axios';
 
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);

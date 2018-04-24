@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './login.css'
-import { connect } from 'react-redux'
-import axios from 'axios'
+import './login.css';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import {
   Link
 } from 'react-router-dom'

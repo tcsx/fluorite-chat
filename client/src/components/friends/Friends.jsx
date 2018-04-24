@@ -1,10 +1,10 @@
-import React, { Component } from "react"
-import './friends.css'
-import Header from '../header/Header.js'
-import NavBar from '../navBar/navBar.js'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import './friends.css';
+import Header from '../header/Header';
+import NavBar from '../navBar/navBar';
+import { connect } from 'react-redux';
 import { SearchBar, Toast } from 'antd-mobile';
-import axios from 'axios'
+import axios from 'axios';
 
 
 class Friends extends Component {

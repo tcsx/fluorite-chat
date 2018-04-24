@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import './search.css'
-import Header from '../header/Header.js'
-import NavBar from '../navBar/navBar.js'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import './search.css';
+import Header from '../header/Header';
+import NavBar from '../navBar/navBar';
+import { connect } from 'react-redux';
 
 class Search extends Component {
     constructor(props) {

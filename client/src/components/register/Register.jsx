@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './register.css'
-import axios from 'axios'
-import { connect } from 'react-redux'
+import './register.css';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import {
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { ActionSheet, Toast } from 'antd-mobile';
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);

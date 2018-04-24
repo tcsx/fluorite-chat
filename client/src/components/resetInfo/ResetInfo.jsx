@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import './resetInfo.css'
-import Header from '../header/Header.js'
-import { connect } from 'react-redux'
-import axios from 'axios'
+import React, { Component } from "react";
+import './resetInfo.css';
+import Header from '../header/Header';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class ResetInfo extends Component {
     componentDidMount(){

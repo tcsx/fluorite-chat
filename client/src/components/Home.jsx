@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './header/Header.js';
-import Footer from './footer/Footer.js';
-import Content from './Content.js';
-import Chatlist from "./chatlist/Chatlist.js"
-import {Route} from 'react-router-dom'
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import Content from './Content';
+import Chatlist from "./chatlist/Chatlist";
+import {Route} from 'react-router-dom';
 
 class Home extends Component {
   render() {

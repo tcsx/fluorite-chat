@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import './chat.css'
-import { connect } from 'react-redux'
-import Header from '../header/Header.js'
-// const socket = require('socket.io-client')('0.0.0.0:4000');
+import React, { Component } from 'react';
+import './chat.css';
+import { connect } from 'react-redux';
+import Header from '../header/Header';
 
 
 class Chat extends Component {
