@@ -33,7 +33,6 @@ function save_info(state = {}, action) {
 function add_chats(rooms = [], action) {
     console.log({action});
     let room_key = action.data.room_id;
-    console.log('\n\n\n\n' + rooms);
     let room_index = rooms.findIndex(element => element && element[room_key]);
 
     let new_arr = JSON.parse(JSON.stringify(rooms));

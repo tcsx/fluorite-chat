@@ -12,7 +12,7 @@
     border-radius: .04rem;
     background: #dcdfe1;
     flex-grow: 0;
-    position: relative;
+    /* position: relative; */
 }
 .list .list_logo_wrap img {
     width:100%;
@@ -45,7 +45,10 @@
 .list .list_text_wrap .list_title .list_time {
     font-size: 0.11rem;
     color:#b2b2b2;
-    float:right;
+    /* float:right; */
+}
+.list_text_wrap {
+    text-align: left;
 }
 .list .list_text_wrap .list_content {
     font-size: 0.13rem;

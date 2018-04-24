@@ -11,8 +11,7 @@ class Friends extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",
-            friends: [] 
+            value: "" 
         }
     }
 
@@ -46,16 +45,9 @@ class Friends extends Component {
         this.setState({ value: '' });
     }
 
-    componentDidMount() {
-        axios.get(`/user/${this.props._id}/friends`).then(res => {
-            this.setState({
-                friends: res.data
-            })
-        })
-    }
 
     renderFriends() {
-        return this.state.friends.map((friend, index) =>
+        return this.props.friends.map((friend, index) =>
                                 <div onClick={() => { this.toUserCard(friend) }} key={index} className="friend_list">
                                     <div className="friend_list_logoWrap">
                                         <img className="friend_list_logo" src={friend.logo} alt="" />

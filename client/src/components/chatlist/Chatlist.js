@@ -88,9 +88,9 @@ console.log(from_id,'from_id')
         </div>
         <div className="listWrap">
           {
-            this.props.chatlists.map((obj, index) =>
+            this.props.chatlists.map((room, index) =>
               <List onChat={this.toChat} key={index}
-                list_obj={obj} />
+                list_obj={room} />
             )
           }
         </div>

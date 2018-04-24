@@ -64,31 +64,8 @@ app.post("/login", function (req, res) {
             });
         }
     });
-
-    // User.findOne({
-    //     username: req.body.username
-    // }, (err, doc) => {
-    //     if (!doc || doc.length < 1) {
-    //         res.json({
-    //             status: "error",
-    //             message: "User has not been exsisted"
-    //         });
-    //     } else if (doc.password != req.body.password) {
-    //         res.json({
-    //             status: "error",
-    //             message: "Wrong password！"
-    //         });
-    //     } else {
-    //         // user = doc;
-    //         online_arr.push(doc.username);
-    //         res.json({
-    //             status: 'success',
-    //             message: "Login success",
-    //             userInfo: doc
-    //         });
-    //     }
-    // });
 });
+
 // Search friend
 app.get("/user/:userId/friends/:friendName", (req, res) => {
     const { userId, friendName } = req.params;
@@ -142,13 +119,13 @@ app.post("/savenickname", (req, res) => {
     });
 });
 
-app.get("/user/:userId/friends", (req, res) => {
-    const { userId } = req.params;
-    User.findById(userId, {
-        'friends': 1,
-        '_id': 0
-    }).populate('friends', ['logo', 'username', 'nickname']).then(friends => res.send(friends.friends)).catch(console.log);
-});
+// app.get("/user/:userId/friends", (req, res) => {
+//     const { userId } = req.params;
+//     User.findById(userId, {
+//         'friends': 1,
+//         '_id': 0
+//     }).populate('friends', ['logo', 'username', 'nickname']).then(friends => res.send(friends.friends)).catch(console.log);
+// });
 
 
 
