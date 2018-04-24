@@ -3,8 +3,6 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const multer = require('multer');
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
 const mongoose = require('./mongo/mongodb.js');
 require('./mongo/models/user');
 
@@ -137,4 +135,35 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 4000;
-module.exports = app.listen(PORT);
+
+
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
+
+let arrAllSocket = {};
+io.on('connection', function (socket) {
+  socket.on('join', function (userName) {
+    user = userName;
+    socket.username = user;
+    arrAllSocket[user] = socket;
+  });
+
+  //Server gets messgege and sends message to another user
+  socket.on('private_message', function (from, to, msg) {
+    var target = arrAllSocket[to];
+
+    if (target) {
+console.log(target.username);
+      target.emit("private_message", from, to, msg);
+      target.emit("common_message", from, to, msg);
+    }
+  });
+
+  //link disconnect
+  socket.on('disconnect', function (data) {
+    delete(arrAllSocket[socket.username]);
+  });
+});
+
+server.listen(PORT);
