@@ -125,7 +125,7 @@ app.post("/savenickname", (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client'));
+    app.use(express.static('client')); 
 
     const path = require('path');
     app.get('*', (req, res) => {
