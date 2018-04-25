@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DB_URL = process.env.MONGODB;
+const DB_URL = process.env.MONGODB || require('./key');
 mongoose.connect(DB_URL);
 
 /**

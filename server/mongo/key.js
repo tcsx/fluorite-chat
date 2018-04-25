@@ -1,0 +1,1 @@
+module.exports = 'mongodb://chat:chat@ds255539.mlab.com:55539/chat';
