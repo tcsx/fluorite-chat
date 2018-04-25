@@ -27,7 +27,7 @@ class Chat extends Component {
             infos = this.props.self_rooms.find(o => o[friend_id]) ? this.props.self_rooms.find(o => o[friend_id])[friend_id] : [];
 
         for (let i = 0; i < infos.length; i++) {
-            let classN = infos[i].username == this.props.self_username ? 'self_message' : 'other_message';
+            let classN = infos[i].username === this.props.self_username ? 'self_message' : 'other_message';
             html += this.info_tpl(classN, infos[i].logo, infos[i].info);
         };
 
@@ -40,7 +40,7 @@ class Chat extends Component {
     }
 
     info_tpl(classN, logo, info) {
-        classN = classN == 'self_message' ? "self_message message" : "other_message message";
+        classN = classN === 'self_message' ? "self_message message" : "other_message message";
         return `
             <div class='${classN}'>
                 <div class="message-logo-wrap"><img src='${logo}' /></div><div class="message-info-wrap">${info}</div>
@@ -54,7 +54,7 @@ class Chat extends Component {
         let _this = this,
             self_id = this.props.self_id;
         window.socket.on("private_message", function (from_id, to_id, data) {
-            if (window.location.pathname != '/chat' || to_id != self_id ) return false;
+            if (window.location.pathname !== '/chat' || to_id !== self_id ) return false;
             _this.appendMsg(data, false ,from_id)
         })
     }
@@ -84,7 +84,7 @@ class Chat extends Component {
 
 
         let read_bool = false;
-        if (message_wrap && (self || from_id===this.state.chat_person._id) ){
+        if (message_wrap && (self || from_id ===    this.state.chat_person._id) ){
             message_wrap.appendChild(div);
             div.scrollIntoView();
 
