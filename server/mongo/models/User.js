@@ -1,7 +1,7 @@
-let mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let userSchema = new Schema({
+const userSchema = new Schema({
     username: String,
     password: String,
     nickname: String,
@@ -13,4 +13,4 @@ let userSchema = new Schema({
     rooms: Array
 });
 
-let User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);

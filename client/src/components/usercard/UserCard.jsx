@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 import { Toast } from 'antd-mobile';
 
 class InfoCard extends Component {
-    constructor(props){
-        super(props)
-    }
     toChat = () => {
         this.props.history.push({
             pathname:'/chat',

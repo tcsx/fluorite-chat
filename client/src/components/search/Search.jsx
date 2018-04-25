@@ -5,9 +5,6 @@ import NavBar from '../navBar/navBar';
 import { connect } from 'react-redux';
 
 class Search extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div id="search">
@@ -52,9 +49,9 @@ class Search extends Component {
         )
     }
 }
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         zone: state
-    }
-}
-export default connect(mapStateToProps)(Search)
+    };
+};
+export default connect(mapStateToProps)(Search);
