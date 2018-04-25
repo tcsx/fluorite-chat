@@ -45,7 +45,12 @@ app.post("/login", function (req, res) {
                 status: "error",
                 message: "User has not been exsisted"
             });
-        } else if (doc.password != req.body.password) {
+        }else if(req.body.validation != req.body.password){
+            res.json({
+                status: "error",
+                message: "Please enter same password！"
+            });
+        }else if (doc.password != req.body.password) {
             res.json({
                 status: "error",
                 message: "Wrong password！"

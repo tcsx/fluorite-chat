@@ -101,6 +101,7 @@ class Register extends Component {
           <div className="input_wrap"><input name="nickname" onChange={this.changeHandle} type="nickname" placeholder="Nickname" /></div>
           <button onClick={this.toRegister} className="signup_btn">Sign Up</button>
           </div>
+          <Link to="/login" ><div className="switch_btn">Login</div></Link>
           </div>
         <div className="more-option" onClick={this.showActionSheet}>More Options</div>
       </div>
