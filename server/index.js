@@ -6,7 +6,7 @@ const mongoose = require('./mongo/mongodb.js');
 require('./mongo/models/User');
 
 app.use(bodyParser.json());
-const upload = multer({ dest: './client/public/logos' });
+const upload = multer({ dest: './client/build/logos' });
 
 const User = mongoose.model('User');
 
@@ -123,14 +123,14 @@ app.post("/savenickname", (req, res) => {
     });
 });
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client'));
+// if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
 
     const path = require('path');
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
     });
-}
+// }
 
 const PORT = process.env.PORT || 4000;
 
