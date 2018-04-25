@@ -87,8 +87,6 @@ input[type="validation"] {
     transform: translateX(-50%);
 }
 .switch_btn{
-  position: absolute;
-  top: 379px;
   height: 60px;
   width: 400px;
   text-align: center;

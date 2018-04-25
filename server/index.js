@@ -21,17 +21,26 @@ app.post("/register", function (req, res) {
 
     User.find({ username: req.body.username }, function (err, doc) {
         if (doc.length < 1) {
-            var user = new User(req.body);
-            user.save(function (err, doc) {
-                if (err) res.send(err);
+            if(req.body.validation != req.body.password){
                 res.json({
-                    status: 'success',
-                    message: "login success",
-                    userInfo: doc
+                    status: "error",
+                    message: "Please enter same password！"
                 });
+            }else{
+                var user = new User(req.body);
+                user.save(function (err, doc) {
+                    if (err) res.send(err);
+                    res.json({
+                        status: 'success',
+                        message: "login success",
+                        userInfo: doc
+                    });
+                });
+            }
+        }else {
+            res.json({
+                message:"Username already exsists！",
             });
-        } else {
-            res.send("Username already exsists！");
         }
     });
 });
@@ -44,11 +53,6 @@ app.post("/login", function (req, res) {
             res.json({
                 status: "error",
                 message: "User has not been exsisted"
-            });
-        }else if(req.body.validation != req.body.password){
-            res.json({
-                status: "error",
-                message: "Please enter same password！"
             });
         }else if (doc.password != req.body.password) {
             res.json({

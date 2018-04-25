@@ -25,6 +25,7 @@ class Register extends Component {
     this.state = {
       username: "",
       password: "",
+      validation:"",
       bool: false
     };
   }
@@ -39,6 +40,7 @@ class Register extends Component {
   username = ""
   password = ""
   nickname = ""
+  validation = ""
 
   successToast(value) {
     Toast.success(value, 1);
@@ -51,10 +53,11 @@ class Register extends Component {
     let userInfo = {
       username: this.username,
       password: this.password,
-      nickname: this.nickname
+      nickname: this.nickname,
+      validation: this.validation
     }
 
-    if (!userInfo.username || !userInfo.password || !userInfo.nickname) {
+    if (!userInfo.username || !userInfo.password || !userInfo.nickname || !userInfo.validation) {
       this.failToast("Please input content！！！")
     }
 
@@ -64,7 +67,7 @@ class Register extends Component {
         _this.props.dispatch({ type: "SAVE_INFO", data: res.data.userInfo })
         _this.props.history.replace("/chatlist")
       } else {
-        _this.failToast("Add fails！！！");
+        _this.failToast(res.data.message);
       }
     })
   }
@@ -98,10 +101,10 @@ class Register extends Component {
            <div class="inputArea">
           <div className="input_wrap"><input name="username" onChange={this.changeHandle} type="text" placeholder="Account" /></div>
           <div className="input_wrap"><input name="password" onChange={this.changeHandle} type="password" placeholder="Password" /></div>
+          <div className="input_wrap"><input name="validation" onChange={this.changeHandle} type="password" placeholder="Password again" /></div>
           <div className="input_wrap"><input name="nickname" onChange={this.changeHandle} type="nickname" placeholder="Nickname" /></div>
           <button onClick={this.toRegister} className="signup_btn">Sign Up</button>
           </div>
-          <Link to="/login" ><div className="switch_btn">Login</div></Link>
           </div>
         <div className="more-option" onClick={this.showActionSheet}>More Options</div>
       </div>

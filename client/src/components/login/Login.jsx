@@ -26,14 +26,12 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      validation: "",
       bool: false
     };
   }
   username = ""
   password = ""
   bool = ""
-  validation= ""
 
   successToast(value) {
     Toast.success(value, 2);
@@ -97,10 +95,9 @@ class Login extends Component {
           <div className="inputArea">
             <div className="inputs"><input name="username" ref="username" onChange={this.changeHandle} type="text" placeholder="Please input account" /></div>
             <div className="inputs"><input name="password" ref="password" onChange={this.changeHandle} type="password" placeholder="Please input password" /></div>
-            <div className="inputs"><input name="validation" ref="validation" onChange={this.changeHandle} type="password" placeholder="Please input password again" /></div>
             <button onClick={this.toLogin} className="login_btn">Log In</button>
+            <Link to="/register" ><div className="switch_button">Register</div></Link>
          </div>
-         <Link to="/register" ><div className="switch_button">Register</div></Link>
        </div>
         <div className="more-option" onClick={this.showActionSheet}>More Options</div>
       </div>

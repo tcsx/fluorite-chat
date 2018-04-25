@@ -36,7 +36,7 @@
 }
 input[type="text"] {
   padding: 30px;
-  margin-top: 200px;
+  margin-top: 150px;
   margin-left: 40px;
   text-align: center;
   height: 30px;
@@ -46,6 +46,17 @@ input[type="text"] {
   border: 1px solid #c8cccf;
 }
 input[type="password"] {
+  padding: 30px;
+  margin-top: 10px;
+  margin-left: 40px;
+  text-align: center;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid #c8cccf;
+}
+input[type="validation"]{
   padding: 30px;
   margin-top: 10px;
   margin-left: 40px;
@@ -88,7 +99,6 @@ input[type="nickname"]{
 }
 .switch_button{
   position: absolute;
-  top: 379px;
   height: 60px;
   width: 400px;
   text-align: center;
