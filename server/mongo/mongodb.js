@@ -1,6 +1,6 @@
 let mongoose = require("mongoose");
 const DB_URL = process.env.MONGODB;
-mongoose.connect(DB_URL);
+mongoose.connect(DB_URL); 
 
 /**
   * link success
