@@ -106,7 +106,7 @@ app.delete('/user/:userId/friends/:friendId', (req, res) => {
 
 // upload figure
 app.post("/uploadLogo", upload.single('avatar'), (req, res) => {
-    User.update({ _id: req.body.id }, { $set: { logo: './public/logos/' + req.file.filename } }, function () {
+    User.update({ _id: req.body.id }, { $set: { logo: './logos/' + req.file.filename } }, function () {
         res.send({
             status: "success",
             url: './logos/' + req.file.filename
