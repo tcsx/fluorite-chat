@@ -6,7 +6,7 @@ const mongoose = require('./mongo/mongodb.js');
 require('./mongo/models/User');
 
 app.use(bodyParser.json());
-const upload = multer({ dest: __dirname + '../client/build/logos' });
+const upload = multer({ dest: './client/build/logos' });
 
 const User = mongoose.model('User');
 
@@ -109,7 +109,7 @@ app.post("/uploadLogo", upload.single('avatar'), (req, res) => {
     User.update({ _id: req.body.id }, { $set: { logo: './public/logos/' + req.file.filename } }, function () {
         res.send({
             status: "success",
-            url: './public/logos/' + req.file.filename
+            url: './logos/' + req.file.filename
         });
     });
 });
