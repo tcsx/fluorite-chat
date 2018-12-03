@@ -23,9 +23,9 @@ This is an onlien one to one chat application and will support the following fun
 * Log out.
 
 
-![image](https://github.com/tcsx/project-fluorite/blob/master/showFunction1.gif) 
+![image](https://github.com/tcsx/fluorite-chat/blob/master/showFunction1.gif) 
 
-![image](https://github.com/tcsx/project-fluorite/blob/master/showFunction2.gif)  
+![image](https://github.com/tcsx/fluorite-chat/blob/master/showFunction2.gif)  
 ### 
 And if you download code here, you should:  
 1. `npm install` at `./project-fluorite/client`.
